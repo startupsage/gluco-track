@@ -22,13 +22,13 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "GlockTrack AI",
+  title: "GlucoTrack AI",
   description: "Smart Diabetes Management Assistant powered by AI",
   manifest: "/gluco-track/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "GlockTrack AI",
+    title: "GlucoTrack AI",
   },
   icons: {
     icon: [

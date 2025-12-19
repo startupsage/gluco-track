@@ -6,7 +6,7 @@ export class GlockDatabase extends Dexie {
     profile!: Table<UserProfile>;
 
     constructor() {
-        super('GlockTrackDB');
+        super('GlucoTrackDB');
         this.version(1).stores({
             logs: '++id, type, timestamp, source',
             profile: '++id'

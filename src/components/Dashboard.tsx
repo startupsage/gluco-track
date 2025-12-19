@@ -91,7 +91,7 @@ export function Dashboard({ onAddManual, onScan, onViewHistory }: { onAddManual:
                         <Card key={item.type} className={cn("p-4 flex items-center justify-between border-none shadow-sm", item.bg)}>
                             <div className="flex items-center gap-4">
                                 <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden border border-white/20 shadow-sm", "bg-white/50 backdrop-blur-sm")}>
-                                    <img src={getAssetPath("/icon.png")} alt="GlockTrack AI" className="w-full h-full object-cover" />
+                                    <img src={getAssetPath("/icon.png")} alt="GlucoTrack AI" className="w-full h-full object-cover" />
                                 </div>
                                 <div className="text-left">
                                     <div className="text-sm font-black text-gray-400 uppercase tracking-tighter mb-0.5">Latest {item.type === 'post-prandial' ? 'PP' : item.type}</div>

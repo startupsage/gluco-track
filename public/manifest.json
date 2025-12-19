@@ -1,6 +1,6 @@
 {
-    "name": "GlockTrack AI",
-    "short_name": "GlockTrack",
+    "name": "GlucoTrack AI",
+    "short_name": "GlucoTrack",
     "description": "Smart Diabetes Management Assistant powered by AI",
     "start_url": "/gluco-track/",
     "scope": "/gluco-track/",
@@ -25,6 +25,12 @@
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "any maskable"
+        },
+        {
+            "src": "/gluco-track/splash-screen.png",
+            "sizes": "2048x2048",
+            "type": "image/png",
+            "purpose": "any"
         }
     ]
 }

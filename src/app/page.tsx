@@ -34,12 +34,12 @@ export default function Home() {
               </button>
             ) : (
               <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden border border-white/20 shadow-sm", "bg-white/50 backdrop-blur-sm")}>
-                <img src={getAssetPath("/icon.png")} alt="GlockTrack AI" className="w-full h-full object-cover" />
+                <img src={getAssetPath("/icon.png")} alt="GlucoTrack AI" className="w-full h-full object-cover" />
               </div>
             )}
             <div>
               <h1 className="text-xl font-black text-foreground tracking-tight leading-none">
-                {view === 'dashboard' ? 'GlockTrack AI' :
+                {view === 'dashboard' ? 'GlucoTrack AI' :
                   view === 'scan' ? 'Scanner' :
                     view === 'manual' ? 'Manual Log' :
                       view === 'history' ? 'History' : 'Profile'}
