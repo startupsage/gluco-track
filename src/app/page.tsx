@@ -7,7 +7,7 @@ import { ManualLog } from '@/components/ManualLog';
 import { Profile } from '@/components/Profile';
 import { LogsView } from '@/components/LogsView';
 import { Plus, LayoutDashboard, Activity, UserCircle } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn, getAssetPath } from '@/lib/utils';
 
 import { db } from '@/lib/db';
 import { useLiveQuery } from 'dexie-react-hooks';
@@ -33,8 +33,8 @@ export default function Home() {
                 <LayoutDashboard className="w-6 h-6" />
               </button>
             ) : (
-              <div className="w-8 h-8 rounded-lg overflow-hidden shadow-md shadow-primary/20 border border-primary/10">
-                <img src="/icon.png" alt="GlockTrack AI" className="w-full h-full object-cover" />
+              <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden border border-white/20 shadow-sm", "bg-white/50 backdrop-blur-sm")}>
+                <img src={getAssetPath("/icon.png")} alt="GlockTrack AI" className="w-full h-full object-cover" />
               </div>
             )}
             <div>
