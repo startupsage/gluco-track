@@ -88,7 +88,18 @@ jobs:
 
       - name: Build with Next.js
         # Ensure the site is exported to ./out so it can be uploaded for Pages.
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build
+
+      - name: Debug - List output directory
+        run: |
+          if [ -d "./out" ]; then
+            echo "✓ ./out directory exists"
+            ls -la ./out
+          else
+            echo "✗ ./out directory not found"
+            echo "Current directory contents:"
+            ls -la
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
