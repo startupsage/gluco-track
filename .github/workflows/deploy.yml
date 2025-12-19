@@ -98,6 +98,13 @@ jobs:
           ${{ steps.detect-package-manager.outputs.manager }} run build
           echo "Build completed with exit code: $?"
 
+      - name: Export static site to ./out
+        # Use the detected runner so it works with npm, yarn or pnpm
+        run: |
+          echo "Exporting static HTML to ./out"
+          ${{ steps.detect-package-manager.outputs.runner }} next export
+          echo "Export step exit code: $?:"
+
       - name: Debug - Comprehensive directory check
         run: |
           echo "=== Current working directory ==="
