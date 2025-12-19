@@ -86,19 +86,37 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
+      - name: Clean previous build artifacts
+        run: rm -rf out .next
+
       - name: Build with Next.js
         # Ensure the site is exported to ./out so it can be uploaded for Pages.
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build
-
-      - name: Debug - List output directory
+        env:
+          NODE_ENV: production
         run: |
+          echo "Building Next.js application..."
+          ${{ steps.detect-package-manager.outputs.manager }} run build
+          echo "Build completed with exit code: $?"
+
+      - name: Debug - Comprehensive directory check
+        run: |
+          echo "=== Current working directory ==="
+          pwd
+          echo ""
+          echo "=== Root directory contents ==="
+          ls -la
+          echo ""
           if [ -d "./out" ]; then
-            echo "✓ ./out directory exists"
-            ls -la ./out
+            echo "✓ ./out directory FOUND"
+            echo "=== Contents of ./out ==="
+            ls -laR ./out | head -50
           else
-            echo "✗ ./out directory not found"
-            echo "Current directory contents:"
-            ls -la
+            echo "✗ ./out directory NOT FOUND"
+            if [ -d "./.next" ]; then
+              echo ""
+              echo "=== .next directory found ==="
+              ls -la ./.next
+            fi
           fi
 
       - name: Upload artifact
