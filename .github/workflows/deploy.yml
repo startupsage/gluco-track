@@ -65,13 +65,6 @@ jobs:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        with:
-          # Automatically inject basePath in your Next.js config file, and a
-          # can derive from your repository name.
-          static_site_generator: next
-
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -97,6 +90,18 @@ jobs:
           echo "Building Next.js application..."
           ${{ steps.detect-package-manager.outputs.manager }} run build
           echo "Build completed with exit code: $?"
+          echo ""
+          echo "Verifying out directory was created..."
+          if [ -d "./out" ]; then
+            echo "✓ ./out directory exists"
+            echo "Contents:"
+            ls -la ./out
+          else
+            echo "✗ ERROR: ./out directory was NOT created!"
+            echo "Checking .next directory:"
+            ls -la .next/ || echo "No .next directory found"
+            exit 1
+          fi
 
       - name: Debug - Comprehensive directory check
         run: |
